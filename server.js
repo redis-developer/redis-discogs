@@ -1,14 +1,13 @@
+require('dotenv').config({ override: false })
+
 const express = require("express");
 const app = express();
 const cors = require("cors");
-const controller = require('./controllers/tutorial.controller.js');
+const controller = require('./controllers/album.controller.js');
 
 (async () => {
-
-  app.use(cors({origin: "http://localhost:3000"}))
-
+  app.use(cors({origin: process.env.FE_URL}))
   app.use(express.json())
-
   app.use(express.urlencoded({extended:true}))
 
   app.get("/api/reload", controller.reload)
@@ -18,13 +17,7 @@ const controller = require('./controllers/tutorial.controller.js');
   app.get("/api/albums/search/", controller.search)
   app.put("/api/albums/:entityID", controller.update)
   app.delete("/api/albums/:entityID", controller.delete)
-
-
-  
-const PORT = process.env.PORT || 3001
-
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
-})
-
+  app.listen(process.env.PORT, () => {
+    console.log(`Server running on port ${process.env.PORT}`)
+  })
 })();
