@@ -1,0 +1,142 @@
+[
+    {
+        "artist": "Harvestman",
+        "owner": "justincastilla",
+        "title": "Music for Megaliths",
+        "condition": 7,
+        "format" : "Vinyl",
+        "comments" : "Has a few dents on the gatefold, but otherwise in great condition. Comes with original stickers",
+        "forSale": true,
+        "price": 19.99
+    },
+    {
+        "artist": "Tribes of Neurot",
+        "owner": "simonprickett",
+        "title": "Adaptation and Survival",
+        "condition": 7,
+        "format" : "Vinyl",        
+        "comments" : "Has a few dents on the gatefold, but otherwise in great condition. Comes with original stickers",
+        "forSale": false,
+        "price": 19.99
+    },
+    {
+        "artist": "Jesu",
+        "owner": "justincastilla",
+        "title": "Silver",
+        "condition": 7,
+        "format" : "Vinyl",        
+        "comments" : "Has a few dents on the gatefold, but otherwise in great condition. Comes with original stickers",
+        "forSale": false,
+        "price": 19.99
+    },
+    {
+        "artist": "Kylesa",
+        "owner": "justincastilla",
+        "title": "Ultraviolet",
+        "condition": 7,
+        "format" : "Vinyl",        
+        "comments" : "Has a few dents on the gatefold, but otherwise in great condition. Comes with original stickers",
+        "forSale": true,
+        "price": 19.99
+    },
+    {
+        "artist": "Baroness",
+        "owner": "simonprickett",
+        "title": "The Red Album",
+        "condition": 7,
+        "format" : "Vinyl",        
+        "comments" : "Has a few dents on the gatefold, but otherwise in great condition. Comes with original stickers",
+        "forSale": true,
+        "price": 19.99
+    },
+    {
+        "artist": "Majeure",
+        "owner": "justincastilla",
+        "title": "Union of Worlds",
+        "condition": 10,
+        "format" : "Vinyl",        
+        "comments" : "Signed by A.E. Ferrerra himself. Comes with ticket stubs of show of purchase. MINT CONDITION!",
+        "forSale": true,
+        "price": 85.95
+    },  
+    {
+        "artist": "Steve Moore",
+        "owner": "justincastilla",
+        "title": "Liminal Migration",
+        "condition": 9,
+        "format" : "Vinyl",        
+        "comments" : "Bought this at one of Steve Moore's shows. Not exactly my thing, so my loss is your gain!",
+        "forSale": true,
+        "price": 10.00
+    },      
+    {
+        "artist": "Sinoia Caves",
+        "owner": "simonprickett",
+        "title": "Beyond the Black Rainbow",
+        "condition": 8.5,
+        "format" : "Vinyl",        
+        "comments" : "Found this album in a used record bin in Victoria, B.C. Only willing to sell if you're willing to pay this much",
+        "forSale": true,
+        "price": 199.99
+    },
+    {
+        "artist": "Lisa Bella Donna",
+        "owner": "justincastilla",
+        "title": "Moogmentum",
+        "condition": 9.5,
+        "format" : "Vinyl",        
+        "comments" : "Has some slight stretches of the cellophane wrap. Bought it at the Moog factory in Asheville, N.C.",
+        "forSale": true,
+        "price": 24.99
+    },
+    {
+        "artist": "Nickelback",
+        "owner": "justincastilla",
+        "title": "Silver Side Up",
+        "condition": 3.5,
+        "format" : "CD",        
+        "comments" : "I own this so I can take out my frustrations on it. Horrible band!",
+        "forSale": true,
+        "price": 4
+    },
+    {
+        "artist": "El Ten Eleven",
+        "owner": "simonprickett",
+        "title": "Banker's Hill",
+        "condition": 7.5,
+        "format" : "Vinyl",        
+        "comments" : "Picked this up at their last show in San Diego before lockdown!",
+        "forSale": false,
+        "price": 0
+    },
+    {
+        "artist": "Rosalie Cunningham",
+        "owner": "suzeshardlow",
+        "title": "Rosalie Cunningham",
+        "condition": 10,
+        "format" : "CD",        
+        "comments" : "Amazing artist! I have an extra copy of her self-titled album up for sale. Still in the cellophane!",
+        "forSale": true,
+        "price": 10
+    },
+    {
+        "artist": "Osamu Kitajima",
+        "owner": "suzeshardlow",
+        "title": "Benzaiten",
+        "condition": 9,
+        "format" : "Vinyl",        
+        "comments" : "Super rare orange and green splatter color vinyl sold only at the Roadburn Festival in 2019. Amazing modern jazz fusion.",
+        "forSale": true,
+        "price": 45
+    },
+    {
+        "artist": "Container",
+        "owner": "suzeshardlow",
+        "title": "Adhesive",
+        "condition": 7,
+        "format" : "CD",        
+        "comments" : "Friend left this CD in my car and moved away. It's kinda abrasive and glitchy EDM but still weirdly groovy.",
+        "forSale": true,
+        "price": 5
+    }           
+]
