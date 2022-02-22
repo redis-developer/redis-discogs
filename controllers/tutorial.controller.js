@@ -1,7 +1,4 @@
-const KEY_PREFIX = 'tutorial'
-const CURRENT_USER = 'justincastilla'
 const albumsList = require('./albumsList.json');
-
 
 /* 
   Redis setup
@@ -23,13 +20,6 @@ let schema = new Schema(Album, albumStructure , { dataStructure: 'JSON' });
 let client = new Client()
 let repository = new Repository(schema, client);
 client.open(process.env.REDIS_OM_URL)
-
-
-const getKey = (...args) => {
-  let keyArgs = `${args.join(':').toLowerCase().replace(/ /g, '-')}`
-  return `user:${CURRENT_USER}`
-}
-
 
 /*
   Reload: clears the Redis instance of albums and re-indexes the datastore
