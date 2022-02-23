@@ -92,7 +92,6 @@ exports.getOne = async (req, res) => {
 */
 
 exports.search = async (req, res) => {
-  console.log('search called')
   const queryParams = req.query
   let property, value;
   
@@ -120,6 +119,12 @@ exports.search = async (req, res) => {
 exports.update = async (req, res) => {
   const entityID = req.params.entityID
   const updateData = req.body
+  if(updateData.condition){
+    updateData.condition = parseInt(updateData.condition)
+  }
+  if(updateData.price){
+    updateData.price = parseInt(updateData.price)
+  }
 
   // Retrieve existing album
   let album = await repository

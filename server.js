@@ -2,11 +2,9 @@ require('dotenv').config({ override: false })
 
 const express = require("express");
 const app = express();
-const cors = require("cors");
 const controller = require('./controllers/album.controller.js');
 
 (async () => {
-  app.use(cors({origin: process.env.FE_URL}))
   app.use(express.json())
   app.use(express.urlencoded({extended:true}))
 
