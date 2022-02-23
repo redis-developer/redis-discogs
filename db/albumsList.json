@@ -1,7 +1,6 @@
 [
     {
         "artist": "Harvestman",
-        "owner": "justincastilla",
         "title": "Music for Megaliths",
         "condition": 7,
         "format" : "Vinyl",
@@ -11,7 +10,6 @@
     },
     {
         "artist": "Tribes of Neurot",
-        "owner": "simonprickett",
         "title": "Adaptation and Survival",
         "condition": 7,
         "format" : "Vinyl",        
@@ -21,7 +19,6 @@
     },
     {
         "artist": "Jesu",
-        "owner": "justincastilla",
         "title": "Silver",
         "condition": 7,
         "format" : "Vinyl",        
@@ -31,7 +28,6 @@
     },
     {
         "artist": "Kylesa",
-        "owner": "justincastilla",
         "title": "Ultraviolet",
         "condition": 7,
         "format" : "Vinyl",        
@@ -41,7 +37,6 @@
     },
     {
         "artist": "Baroness",
-        "owner": "simonprickett",
         "title": "The Red Album",
         "condition": 7,
         "format" : "Vinyl",        
@@ -51,7 +46,6 @@
     },
     {
         "artist": "Majeure",
-        "owner": "justincastilla",
         "title": "Union of Worlds",
         "condition": 10,
         "format" : "Vinyl",        
@@ -61,7 +55,6 @@
     },  
     {
         "artist": "Steve Moore",
-        "owner": "justincastilla",
         "title": "Liminal Migration",
         "condition": 9,
         "format" : "Vinyl",        
@@ -71,7 +64,6 @@
     },      
     {
         "artist": "Sinoia Caves",
-        "owner": "simonprickett",
         "title": "Beyond the Black Rainbow",
         "condition": 8.5,
         "format" : "Vinyl",        
@@ -81,7 +73,6 @@
     },
     {
         "artist": "Lisa Bella Donna",
-        "owner": "justincastilla",
         "title": "Moogmentum",
         "condition": 9.5,
         "format" : "Vinyl",        
@@ -91,7 +82,6 @@
     },
     {
         "artist": "Nickelback",
-        "owner": "justincastilla",
         "title": "Silver Side Up",
         "condition": 3.5,
         "format" : "CD",        
@@ -101,7 +91,6 @@
     },
     {
         "artist": "El Ten Eleven",
-        "owner": "simonprickett",
         "title": "Banker's Hill",
         "condition": 7.5,
         "format" : "Vinyl",        
@@ -111,7 +100,6 @@
     },
     {
         "artist": "Rosalie Cunningham",
-        "owner": "suzeshardlow",
         "title": "Rosalie Cunningham",
         "condition": 10,
         "format" : "CD",        
@@ -121,7 +109,6 @@
     },
     {
         "artist": "Osamu Kitajima",
-        "owner": "suzeshardlow",
         "title": "Benzaiten",
         "condition": 9,
         "format" : "Vinyl",        
@@ -131,7 +118,6 @@
     },
     {
         "artist": "Container",
-        "owner": "suzeshardlow",
         "title": "Adhesive",
         "condition": 7,
         "format" : "CD",        

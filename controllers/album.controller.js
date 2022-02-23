@@ -1,6 +1,7 @@
-const albumsList = require('./albumsList.json');
-const { client, repository } = require('../db/db.config');
+const albumsList = require('../db/albumsList.json');
+const usersList = require('../db/usersList.json');
 
+const { client, repository } = require('../db/db.config');
 
 /*
   Reload: Refreshes db with data from user.json and albumsList.json.
@@ -10,9 +11,11 @@ const { client, repository } = require('../db/db.config');
 */
 exports.reload = async (req, res) => {
   await client.execute(['FLUSHALL'])
-  albumsList.forEach( async albumJSON => {
+  albumsList.forEach( async (albumJSON, index) => {
     let album = repository.createEntity()
     album = Object.assign(album, albumJSON)
+    const ownerIndex = index % usersList.length
+    album.owner = usersList[ownerIndex].username
     await repository.save(album)
   })
   try {

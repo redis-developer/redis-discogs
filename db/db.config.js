@@ -1,6 +1,8 @@
 /* 
   Redis setup
 */
+require('dotenv').config({ override: false })
+
 const { Client, Entity, Schema, Repository } = require('redis-om')
 class Album extends Entity {}
 const albumStructure = {

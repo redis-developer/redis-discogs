@@ -1,0 +1,41 @@
+[
+  {
+    "username": "justincastilla",
+    "email": "justin@redis.com",
+    "date-created": 1644602883547,
+    "last-login" : 1644602883547,
+    "region": -8,
+    "admin": false,
+    "genres": ["NOISE", "INDIE", "DRONE", "CHAMBER_POP", "EXPERIMENTAL","INSTRUMENTAL", "METAL", "SKA"],
+    "bio": "Hello, my name is Justin. I'm an avid fan of music and going to concerts. I love travelling to other states to see shows and large festivals where I can see new bands next to my favorites. I'm here to look for rare vinyl of my favorite artists and hopefully find some new bands.",
+    "img": null,
+    "access": ["BROWSE", "CURATE", "BUY", "SELL", "FORUM_CREATE", "FORUM_POST", "FORUM_DELETE"],
+    "playlist":[]
+  },
+  {
+    "username": "simonprickett",
+    "email": "simon@redis.com",
+    "date-created": 1644602883547,
+    "last-login" : 1644602883547,
+    "region": 0,
+    "admin": false,
+    "genres": ["NOISE", "INDIE", "DRONE", "CHAMBER_POP", "EXPERIMENTAL","INSTRUMENTAL", "METAL", "SKA"],
+    "bio": "Hello, my name is Simon. I'm an avid fan of music and going to concerts. I love travelling to other states to see shows and large festivals where I can see new bands next to my favorites. I'm here to look for rare vinyl of my favorite artists and hopefully find some new bands.",
+    "img": null,
+    "access": ["BROWSE", "CURATE", "BUY", "SELL", "FORUM_CREATE", "FORUM_POST", "FORUM_DELETE"],
+    "playlist":[]
+  },
+  {
+    "username": "suzeshardlow",
+    "email": "suze@redis.com",
+    "date-created": 1644602883547,
+    "last-login" : 1644602883547,
+    "region": 0,
+    "admin": true,
+    "genres": ["NOISE", "INDIE", "DRONE", "CHAMBER_POP", "EXPERIMENTAL","INSTRUMENTAL", "METAL", "SKA"],
+    "bio": "Hello, my name is Suze. I'm an avid fan of music and going to concerts. I love travelling to other countries to see shows and large festivals where I can see new bands . I'm here to look for rare vinyl of my favorite artists and hopefully find some new bands.",
+    "img": null,
+    "access": ["BROWSE", "CURATE", "BUY", "SELL", "FORUM_CREATE", "FORUM_POST", "FORUM_DELETE"],
+    "playlist":[]
+  }
+]
