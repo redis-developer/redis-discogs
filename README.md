@@ -100,6 +100,38 @@ HTTP requests can now be sent to the server.
 | Remove an entry   | DELETE| `api/albums/{entryID}`|
 | Reload and reindex| GET   | `api/reload`| reloads data and reindexes after any schema change
 
+## Create One Album
+To create a new album entry, we pass an album object within the request body along to the server. 
+
+```js
+exports.create = async (req, res) => {
+  const albumData = req.body
+  albumData.condition = parseInt(albumData.condition)
+  albumData.price = parseInt(albumData.price)
+  albumData.forSale = 'true' && true
+
+  await repository.createAndSave(albumData)
+    .then(async response => res.json(response))
+    .catch( e => res.json({'error': e.message}))
+};
+```
+
+Example Call:
+ ```
+ POST - api/albums
+ body: {'artist': 'The Smashing Pumpkins',
+        'title': 'Siamese Dream',
+        'condition': 5,
+        'format': 'CD',
+        'comments': 'a bit dented and scratched, but plays still.',
+        'price': 4,
+        'forSale': true
+        }
+ ```
+ This will return the new Redis entry with the associated entryID.
+
+
+
 ## Get All albums
 This endpoint includes optional offset and count values for pagination. You would normally want this as retrieving THE ENTIRE database of entires would be quite large in production. 
 
