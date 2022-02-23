@@ -1,6 +1,6 @@
 # redis-discogs
 
-This application aims to provide an example of the Redis-OM client connected to a Redis instance. Typical database actions such as create, read, update, and destroy are covered.  This is by no means a full and finalized coverage of the features of the Redis-Om Node.js client, but more a gentle introduction. 
+This application aims to provide an example of the [Redis-OM client](https://github.com/redis/redis-om-node/blob/main/README.md) connected to a Redis instance. Typical database actions such as create, read, update, and destroy are covered.  This is by no means a full and finalized coverage of the features of the Redis-Om Node.js client, but more a gentle introduction. 
 
 This is a simple application that stores music albums in a database, somewhat similar to the popular website [Discogs.com](https://www.discogs.com/). Users can enter album information with the option to place the album for sale or simply to brag.
 
@@ -43,7 +43,7 @@ Ensure that you are using an instance of Redis that has the RedisJSON and RediSe
 A how-to video on acquiring a Redis Cloud instance can be found [here](https://youtu.be/5QLJSPn8VX0?t=99)
 
 
-## Installation
+## Installing the app
 
 Clone this repository:
 ```
@@ -62,7 +62,6 @@ $ npm install
 
 ## Setting up Environment variables
 
-### `REDIS_OM_URL`
 You will now need to set an environment variable for your Redis instance. If you are running a local cloud instance or a Docker image, your Redis URL would most likely be something like this:
 
 `redis://localhost:6379`
@@ -82,4 +81,158 @@ REDIS_OM_URL="<redis://username:password@host:port/db_number>"
 The default `PORT` environment variable will be set to `3001` unless otherwise specified
 
 
-### 
+## Running the app
+
+Let's populate the Redis instance with some albums. There will be 3 users that will 'own' these albums. This will allow us to search for albums by owner later on.
+
+```
+$ npm run load
+```
+
+
+To run the application locally, enter the following in the same previous terminal:
+
+```
+$ npm run dev
+
+> intro-redis-be-bez@1.0.0 dev
+> node server.js
+```
+
+HTTP requests can now be sent to the server.
+
+
+
+
+## HTTP Requests
+
+### Get All albums
+This endpoint includes optional offset and count values for pagination. You would normally want this as retrieving THE ENTIRE database of entires would be quite large in production. 
+
+```js
+exports.getAll = async (req, res) => {
+  const offset = req.query.offset || 0
+  const count = req.query.count || 10
+  
+  await repository
+    .search().return
+    .page(offset, count)
+    .then(response => res.json(response))
+    .catch( e => res.json({'error': e.message}))
+
+};
+```
+
+Example Call:
+ ```
+ GET - api/albums/?offset=00&count=10
+ ```
+ This would return the first ten entries the database retrieves
+
+
+ ### Get One album
+
+This endpoint retrieves one single album based on the the EntryID included as a URL parameter. 
+
+```js
+exports.getOne = async (req, res) => {
+  const entityID = req.params.entityID
+  
+  await repository
+    .fetch(entityID)
+    .then( response => res.json(response))
+    .catch( e => res.json({'error': e.message}))
+};
+```
+
+Example Call:
+ ```
+ GET - api/albums/01FWJ4TBXZSQEMNENDF7KJ4BE8
+ ```
+ This would return the the entry with the associated entryID. Note that this entryID is for RediSearch.  If you weren't using this module, you would dynamically generate the key based on a unique value.
+
+
+
+ ### Search
+
+ This endpoint takes two query parameters and performs a search based on the property and value passed in.
+
+```js
+ exports.search = async (req, res) => {
+  const queryParams = req.query
+  let property, value;
+  
+  for(key in queryParams){
+    property = key
+    value = queryParams[key]
+  }
+
+  await repository
+    .search()
+    .where(property).matches(value)
+    .all()
+    .then(response => res.json(response))
+    .catch(e => res.json({'error': e.message}))
+}
+```
+Example Call:
+ ```
+ GET - api/albums/search/?artist=Majeure
+ ```
+ This would return all entries with the artist property containing the string `Majeure` in an array.
+
+ ```
+ GET - api/albums/search/?format=vinyl
+ ```  
+ This would return all entries where the format is set to `Vinyl`
+
+
+ ### Update
+
+With Redis, an update is simply an overwrite of the specific values that are to be updated. The path parameter will contain the `entityID` and the request body will contain the key/value pairs to be updated within the entry.
+
+```js
+exports.update = async (req, res) => {
+  const entityID = req.params.entityID
+  const updateData = req.body
+
+  // Retrieve existing album
+  let album = await repository
+    .fetch(entityID)
+  // map updated data onto existing data
+  album.entityData = Object.assign(album.entityData, updateData)
+  // save album
+  await repository.save(album)
+    .then( response => res.json(response))
+    .catch( e => res.json({'error': e.message}))
+}
+```
+
+Example Call:
+ ```
+ PUT - api/albums/01FWJ4TBXZSQEMNENDF7KJ4BE8
+ body:     body: { artist: updatedValue, comments: updatedValue }
+ ```
+
+ This updates only the properties and values you send within the request body. A receipt of update is sent back in the form of the original `entityID`.
+
+
+### Delete
+This endpoint removes one entry based on the URL parameter.
+
+```js
+exports.delete = async (req, res) => {
+  const entityID = req.params.entityID
+  await repository
+    .remove(entityID)
+    .then(response => res.sendStatus(200))
+    .catch( e => res.json({'error': e.message}))
+};
+```
+
+Example Call:
+ ```
+ DELETE - api/albums/01FWJ4TBXZSQEMNENDF7KJ4BE8
+  ```
+
+ This removes the album with `entityID` `01FWJ4TBXZSQEMNENDF7KJ4BE8` and returns a successful `OK 200`.

@@ -23,19 +23,21 @@ const { Client, Entity, Schema, Repository } = require('redis-om');
 
   client.execute(['FLUSHALL'])
   .then( async () => {
+    console.log('Entries Deleted')
     albumsList.forEach( async (albumJSON, index) =>  {
       const ownerIndex = index % usersList.length
       let album = repository.createEntity()
       albumJSON.owner = usersList[ownerIndex].username
       album = Object.assign(album, albumJSON)
-      let result = await repository.save(album)
-      console.log(result)
+      await repository.save(album)
     })
+
     await repository.dropIndex()
+    console.log('Index Dropped')
     await repository.createIndex()
-    console.log('Indexes reindexed')
+    console.log('Entries Indexed')
+    let results = await repository.search().return.all()
+    console.log(`Entries created: ${results.length}`)
     process.exit(0)
   })
-
-
 })()

@@ -92,6 +92,7 @@ exports.getOne = async (req, res) => {
 */
 
 exports.search = async (req, res) => {
+  console.log('search called')
   const queryParams = req.query
   let property, value;
   
@@ -141,7 +142,7 @@ exports.delete = async (req, res) => {
   const entityID = req.params.entityID
   await repository
     .remove(entityID)
-    .then(response => res.json({ response }))
+    .then(response => res.sendStatus(200))
     .catch( e => res.json({'error': e.message}))
 };
 
