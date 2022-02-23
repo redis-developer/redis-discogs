@@ -1,6 +1,5 @@
-# redis-discogs
-
-This application aims to provide an example of the [Redis-OM client](https://github.com/redis/redis-om-node/blob/main/README.md) connected to a Redis instance. Typical database actions such as create, read, update, and destroy are covered.  This is by no means a full and finalized coverage of the features of the Redis-Om Node.js client, but more a gentle introduction. 
+# Redis Discography (Node.js, Express, and Redis)
+This application aims to provide an example of the [Redis-OM client](https://github.com/redis/redis-om-node/blob/main/README.md) connected to a [Redis](https://redis.io/) instance. Typical database actions such as create, read, update, and destroy are covered.  This is by no means a full and finalized coverage of the features of the Redis-Om Node.js client, but more a gentle introduction. 
 
 This is a simple application that stores music albums in a database, somewhat similar to the popular website [Discogs.com](https://www.discogs.com/). Users can enter album information with the option to place the album for sale or simply to brag.
 
@@ -17,17 +16,6 @@ It is recommended that you have a working knowledge of the typical Node.js with 
 3. Each function contacts the Redis server and either creates, updates, or removes an entry.
 
 4. Each entry is a JSON object stored within Redis using the RedisJSON module. Querying, Indexing, and Search capabilities are added to the Redis Database using RediSearch.
-
-## Routing Table:
-| Action      | Method | Route | Notes|
-| ----------- | ----------- | ---------|--------------|
-| Create an entry   | POST  | `api/albums/{entryID}`| include data in body|
-| Get all entries   | GET   | `api/albums`| offset and count query parameters
-| Get one entry     | GET   | `api/albums/{entryID}`|
-| Search for entries| GET   | `api/albums/search`| property and value query parameters
-| Update an entry   | PUT   | `api/albums/{entryID}`| include update data in body
-| Remove an entry   | DELETE| `api/albums/{entryID}`|
-| Reload and reindex| GET   | `api/reload`| reloads data and reindexes after any schema change
 
 ## Acquiring a Redis instance
 To run Redis, you have multiple options:
@@ -98,15 +86,21 @@ $ npm run dev
 > intro-redis-be-bez@1.0.0 dev
 > node server.js
 ```
-
 HTTP requests can now be sent to the server.
 
 
+# HTTP Request and Routing Table:
+| Action      | Method | Route | Notes|
+| ----------- | ----------- | ---------|--------------|
+| Create an entry   | POST  | `api/albums/{entryID}`| include data in body|
+| Get all entries   | GET   | `api/albums`| offset and count query parameters
+| Get one entry     | GET   | `api/albums/{entryID}`|
+| Search for entries| GET   | `api/albums/search`| property and value query parameters
+| Update an entry   | PUT   | `api/albums/{entryID}`| include update data in body
+| Remove an entry   | DELETE| `api/albums/{entryID}`|
+| Reload and reindex| GET   | `api/reload`| reloads data and reindexes after any schema change
 
-
-## HTTP Requests
-
-### Get All albums
+## Get All albums
 This endpoint includes optional offset and count values for pagination. You would normally want this as retrieving THE ENTIRE database of entires would be quite large in production. 
 
 ```js
@@ -130,7 +124,7 @@ Example Call:
  This would return the first ten entries the database retrieves
 
 
- ### Get One album
+ ## Get One album
 
 This endpoint retrieves one single album based on the the EntryID included as a URL parameter. 
 
@@ -153,7 +147,7 @@ Example Call:
 
 
 
- ### Search
+ ## Search Albums
 
  This endpoint takes two query parameters and performs a search based on the property and value passed in.
 
@@ -187,7 +181,8 @@ Example Call:
  This would return all entries where the format is set to `Vinyl`
 
 
- ### Update
+
+ ## Update One Album
 
 With Redis, an update is simply an overwrite of the specific values that are to be updated. The path parameter will contain the `entityID` and the request body will contain the key/value pairs to be updated within the entry.
 
@@ -217,7 +212,8 @@ Example Call:
  This updates only the properties and values you send within the request body. A receipt of update is sent back in the form of the original `entityID`.
 
 
-### Delete
+
+## Delete One Album
 This endpoint removes one entry based on the URL parameter.
 
 ```js
